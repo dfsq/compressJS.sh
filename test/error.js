@@ -1,0 +1,1 @@
+alert('This script consists of' adsf);
