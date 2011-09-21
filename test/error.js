@@ -1,1 +1,1 @@
-alert('This script consists of' adsf);
+alert('This script consists of' error);
