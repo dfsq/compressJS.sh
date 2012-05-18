@@ -45,3 +45,12 @@ ${code} \
 --data output_info=compiled_code \
 --data compilation_level=${COMPILATION_LEVEL} \
 --output ${NEWFILE}`
+
+# Check if output file exists and its size more then 1 byte
+if [ ! -r ${NEWFILE} -o "$(stat -c %s ${NEWFILE})" -le 1 ]
+then
+	echo 'Compilation failed. Probably your code contains of errors.'
+	exit
+fi
+
+echo 'Compilation completed.'
