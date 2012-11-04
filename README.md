@@ -7,13 +7,13 @@ Very simple bash script which compresses javascript files with Google Closure Co
 Files you want to compress and add to the resulting file are separated with spaces. Run next command in terminal:
 
 ```bash
-$ ./compressJS.sh jquery-ui-1.8.16.custom.min.js chat-widget.js templ.min.js
+$ ./compressjs.sh jquery-ui-1.8.16.custom.min.js chat-widget.js templ.min.js
 ```
 
 Sure you can use wildcards in file names:
 
 ```bash
-$ ./compressJS.sh scripts/*.js
+$ ./compressjs.sh scripts/*.js
 ```
 
 ## Home page
