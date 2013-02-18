@@ -20,4 +20,4 @@ $ ./compressjs.sh scripts/*.js
 
 [Home page].
 
-[Home page]: http://dfsq.info/compress-js
+[Home page]: http://dfsq.info/site/read/bash-google-closure-compiler
