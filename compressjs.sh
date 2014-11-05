@@ -17,7 +17,7 @@ fi
 # Itearate through all files
 for f in $*
 do
-        if [ ${f} != NEWFILE ]
+        if [ ${f} != $NEWFILE ]
         then
                 if [ -r ${f} ]
                 then
