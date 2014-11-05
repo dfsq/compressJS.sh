@@ -4,7 +4,7 @@
 SERVICE_URL=http://closure-compiler.appspot.com/compile
 #NEWFILE="c`date +"%d%m%y"`.js"
 #this specifies last arg as destination 
-for NEWFILE in $@; do :; done
+for NEWFILE in $*; do :; done
 
 # Check if files to compile are provided
 if [ $# -eq 0 ]
