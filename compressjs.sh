@@ -2,7 +2,9 @@
 
 # Constants
 SERVICE_URL=http://closure-compiler.appspot.com/compile
-NEWFILE="c`date +"%d%m%y"`.js"
+#NEWFILE="c`date +"%d%m%y"`.js"
+#this specifies last arg as destination 
+for NEWFILE in $*; do :; done
 
 # Check if files to compile are provided
 if [ $# -eq 0 ]
@@ -15,12 +17,15 @@ fi
 # Itearate through all files
 for f in $*
 do
-	if [ -r ${f} ]
-	then
-		code="${code} --data-urlencode js_code@${f}"
-	else
-		echo "File ${f} does not exist or is not readable. Skipped."
-	fi
+        if [ ${f} != $NEWFILE ]
+        then
+                if [ -r ${f} ]
+                then
+                        code="${code} --data-urlencode js_code@${f}"
+                else
+                        echo "File ${f} does not exist or is not readable. Skipped."
+                fi
+        fi
 done
 
 # Send request
