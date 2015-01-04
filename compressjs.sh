@@ -15,6 +15,7 @@ then
 fi
 
 # Itearate through all files
+process_files=false
 for f in $*
 do
         if [ ${f} != $NEWFILE ]
@@ -22,11 +23,21 @@ do
                 if [ -r ${f} ]
                 then
                         code="${code} --data-urlencode js_code@${f}"
+                        # Test whether at least one of the input file is newer than the output file
+                        if [ ${f} -nt $NEWFILE ]; then
+						    process_files=true
+						fi
                 else
                         echo "File ${f} does not exist or is not readable. Skipped."
                 fi
         fi
 done
+
+if ! ${process_files}
+then
+	echo "Already up to date."
+	exit 0
+fi
 
 # Send request
 curl \
@@ -60,8 +71,8 @@ else:
 	print "Compression rate: %.2f" % (float(data["statistics"]["compressedSize"]) / int(data["statistics"]["originalSize"]))
 
 	filename = "'${NEWFILE}'"
-	f = open(filename, "w")
-	f.write(data["compiledCode"])
+	with open(filename, "w") as f:
+		f.write(data["compiledCode"])
 
 	print "\nBuild file %s created.\n" % filename
 ' $@
